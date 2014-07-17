@@ -23,3 +23,8 @@ fi
 
 # Disable that fucker TTY
 stty -ixon
+
+# Git settings
+sudo git config --global user.name "Nikola Dimitroff"
+sudo git config --global user.email "dimitroff.nikola@gmail.com"
+sudo git config --global push.default simple
