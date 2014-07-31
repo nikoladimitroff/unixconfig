@@ -1,3 +1,4 @@
+runtime! archlinux.vim
 " pathogen
 execute pathogen#infect()
 syntax on
@@ -5,10 +6,11 @@ filetype plugin indent on
 
 " Reload .vimrc on save
 autocmd! bufwritepost .vimrc source %
-" Remove all trailing whitespace on save
+" remove all trailing whitespace on save
 autocmd bufwritepre * :%s/\s\+$//e
-" Paste from register *
+" paste from register *
 set clipboard=unnamed
+
 
 
 " Keybindings
@@ -27,21 +29,33 @@ inoremap <c-z> <c-o>u
 noremap <c-y> <c-r>
 inoremap <c-y> <c-o><c-r>
 
+map <c-v> ""gP
+vnoremap <c-c> ""y
+vnoremap <c-x> ""x
 
-vnoremap <c-c> "*y
-vnoremap <c-x> "*x
-map <c-v> "*gp
+" Searching
+noremap <c-f> <Esc>/
+noremap <f3> n
+
 map <c-a> ggVG
 vnoremap <BS> d
 nnoremap <BS> d
+inoremap <del> <Esc>.<del>i
 
 noremap m h
 noremap , j
 noremap . l
 
+" Indentation
+nmap <tab> >>
+nmap <s-tab> <<
+
 " Set variables
 set number
 set nowrap
 set fo-=t
-set tabstop=3
+set tabstop=4
+set expandtab
 set backspace=indent,eol,start whichwrap+=<,>,[,]
+set ignorecase
+set hlsearch
