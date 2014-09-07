@@ -11,8 +11,6 @@ autocmd bufwritepre * :%s/\s\+$//e
 " paste from register *
 set clipboard=unnamed
 
-
-
 " Keybindings
 map <c-t> :tabnew<CR>
 map <c-e> :tabnext<CR>
@@ -29,6 +27,9 @@ inoremap <c-z> <c-o>u
 noremap <c-y> <c-r>
 inoremap <c-y> <c-o><c-r>
 
+" Rebind <c-v> before setting it to paste
+noremap <s-v> <c-v>
+
 map <c-v> ""gP
 vnoremap <c-c> ""y
 vnoremap <c-x> ""x
@@ -36,6 +37,7 @@ vnoremap <c-x> ""x
 " Searching
 noremap <c-f> <Esc>/
 noremap <f3> n
+noremap <c-h> <Esc>:%s/
 
 map <c-a> ggVG
 vnoremap <BS> d
@@ -55,7 +57,12 @@ set number
 set nowrap
 set fo-=t
 set tabstop=4
+set shiftwidth=4
 set expandtab
 set backspace=indent,eol,start whichwrap+=<,>,[,]
 set ignorecase
 set hlsearch
+set colorcolumn=80
+
+set listchars=eol:¶,trail:ṁ,nbsp:·,tab:>-
+set list
