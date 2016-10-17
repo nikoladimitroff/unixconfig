@@ -2,33 +2,33 @@
 # ~/.bashrc
 #
 
-
-
-
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
 gitssh () {
     eval `ssh-agent -s`
-    ssh-add /home/nikola/.ssh/id_rsa
+    ssh-add ~/.ssh/id_rsa
+}
+git-syncpages () {
+    branch=$(git symbolic-ref --short HEAD)
+    git checkout gh-pages
+    git merge $branch
+    git push origin gh-pages
+    git checkout $branch
 }
 vims () {
     vim "$@" -u /home/nikola/config/.vimrc
 }
-instances () {
-    instances=$(ps aux | grep $1 | wc -l)
-    return $instances
-}
 
+# Uncomment for archlinux
 # Start dhcpcd
-sudo dhcpcd ens33
-
+#sudo dhcpcd ens33
 # Disable that fucker TTY
-stty -ixon
+#stty -ixon
 
 # Git settings
-sudo git config --global user.name "Nikola Dimitroff"
-sudo git config --global user.email "dimitroff.nikola@gmail.com"
-sudo git config --global push.default simple
+git config --global user.name "Nikola Dimitroff"
+git config --global user.email "dimitroff.nikola@gmail.com"
+git config --global push.default simple
 
 echo "All is fine"
