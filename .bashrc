@@ -16,9 +16,7 @@ git-syncpages () {
     git push origin gh-pages
     git checkout $branch
 }
-vims () {
-    vim "$@" -u /home/nikola/config/.vimrc
-}
+alias gitshare="git daemon --reuseaddr --verbose --base-path=. --export-all"
 
 # Uncomment for archlinux
 # Start dhcpcd
